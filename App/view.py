@@ -33,13 +33,25 @@ Presenta el menu de opciones y por cada seleccion
 se hace la solicitud al controlador para ejecutar la
 operación solicitada
 """
+# ___________________________________________________
+#  Ruta a los archivos
+# ___________________________________________________
+
+
+file = 'subsamples-small/context_content_features-small.csv'
+
+
+# ___________________________________________________
+#  Menu principal
+# ___________________________________________________
+
 
 def printMenu():
+    print("\n")
+    print("*******************************************")
     print("Bienvenido")
-    print("1- Cargar información en el catálogo")
-    print("2- ")
-
-catalog = None
+    print("1- Inicializar Analizador")
+    print("2- Cargar información")
 
 """
 Menu principal
@@ -48,11 +60,18 @@ while True:
     printMenu()
     inputs = input('Seleccione una opción para continuar\n')
     if int(inputs[0]) == 1:
-        print("Cargando información de los archivos ....")
+        print("\nInicializando....")
+        # cont es el controlador que se usará de acá en adelante
+        cont = controller.init() 
+
 
     elif int(inputs[0]) == 2:
-        pass
-
-    else:
+        print("Cargando información de los archivos ....")
+        controller.loadData(cont, file)
+        print('Eventos de escucha cargados: ' + str(controller.eventSize(cont))) 
+        print('Artistas cargados: ' + str(controller.artistSize(cont)))
+        print('Pistas de audio cargadas: ' + str(controller.trackSize(cont))) 
+   
+    else: 
         sys.exit(0)
 sys.exit(0)
