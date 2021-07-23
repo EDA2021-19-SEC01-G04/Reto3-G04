@@ -45,6 +45,7 @@ def init():
 def loadData(analyzer, file): 
 
     file = cf.data_dir + file
+    print("file", file)
     input_file = csv.DictReader(open(file, encoding="utf-8"),
                                 delimiter=",")
     for event in input_file:
@@ -55,6 +56,8 @@ def loadData(analyzer, file):
 
 # Funciones de ordenamiento
 
+def getEventsByCharacteristics(cont, c1, vmin1, vmax1, c2, vmin2, vmax2):
+    algo = 0
 # Funciones de consulta sobre el catálogo
 
 def eventSize(cont):
@@ -65,7 +68,36 @@ def artistSize(cont):
 
     return model.artistSize(cont)
 
+def artistSize2(cont):
+    return model.artistSize2(cont)
+
 def trackSize (cont):
 
     return model.trackSize(cont)
+
+def firstFiveEvents(cont):
+    result = model.firstFiveEvents(cont)
+    return result
+
+def lastFiveEvents(cont):
+    result = model.LastFiveEvents(cont)
+    return result
+
+def getEventsByRange(analyzer, c1, vmin1, vmax1, c2, vmin2, vmax2):
+    result =  model.getEventsByRange(analyzer, c1, vmin1, vmax1, c2, vmin2, vmax2)
+    return result
+
+def getArtistsByRange(analyzer, c1, vmin1, vmax1, c2, vmin2, vmax2):
+    result =  model.getArtistsByRange(analyzer, c1, vmin1, vmax1, c2, vmin2, vmax2)
+    return result
+
+def getTracksByRange(analyzer, c1, vmin1, vmax1, c2, vmin2, vmax2):
+    result =  model.getTracksByRange(analyzer, c1, vmin1, vmax1, c2, vmin2, vmax2)
+    return result
+
+def getUnicos(lst):
+    return model.getUnicos(lst)
+
+def aleatorias(lista):
+    return model.aleatoria(lista) 
  
